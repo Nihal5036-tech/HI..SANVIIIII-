@@ -1,0 +1,1680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hey Saanvi! 💜 This One's For You</title>
+    <meta name="description" content="A special mood-boosting page made just for Saanvi">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #a855f7;
+            --primary-light: #c084fc;
+            --secondary: #f472b6;
+            --accent: #fbbf24;
+            --warm: #fb923c;
+            --bg-dark: #0f0a1a;
+            --bg-card: rgba(168, 85, 247, 0.08);
+            --text: #f0e6ff;
+            --text-muted: #b09ed4;
+            --glow-purple: rgba(168, 85, 247, 0.4);
+            --glow-pink: rgba(244, 114, 182, 0.4);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text);
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* ===== BACKGROUND EFFECTS ===== */
+        .bg-orbs {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.3;
+            animation: orbFloat 20s ease-in-out infinite;
+        }
+
+        .orb-1 {
+            width: 400px; height: 400px;
+            background: var(--primary);
+            top: 10%; left: -5%;
+            animation-delay: 0s;
+        }
+
+        .orb-2 {
+            width: 350px; height: 350px;
+            background: var(--secondary);
+            top: 50%; right: -10%;
+            animation-delay: -7s;
+        }
+
+        .orb-3 {
+            width: 300px; height: 300px;
+            background: var(--accent);
+            bottom: 10%; left: 30%;
+            animation-delay: -14s;
+        }
+
+        @keyframes orbFloat {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            25% { transform: translate(50px, -30px) scale(1.1); }
+            50% { transform: translate(-20px, 50px) scale(0.95); }
+            75% { transform: translate(30px, 20px) scale(1.05); }
+        }
+
+        /* Starfield */
+        .stars {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .star {
+            position: absolute;
+            width: 2px; height: 2px;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 3s ease-in-out infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.2; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.5); }
+        }
+
+        /* ===== FLOATING EMOJIS ===== */
+        .floating-emoji {
+            position: fixed;
+            font-size: 1.5rem;
+            z-index: 1;
+            pointer-events: none;
+            animation: floatUp 8s linear infinite;
+            opacity: 0;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.7; }
+            90% { opacity: 0.7; }
+            100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+        }
+
+        /* ===== CONFETTI ===== */
+        .confetti-container {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        .confetti-piece {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            top: -10px;
+            animation: confettiFall 3s ease-out forwards;
+        }
+
+        @keyframes confettiFall {
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+        }
+
+        /* ===== MAIN CONTENT ===== */
+        .content {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(168, 85, 247, 0.15);
+            border: 1px solid rgba(168, 85, 247, 0.3);
+            border-radius: 50px;
+            padding: 0.5rem 1.5rem;
+            font-size: 0.9rem;
+            color: var(--primary-light);
+            margin-bottom: 2rem;
+            animation: fadeInDown 1s ease-out;
+            backdrop-filter: blur(10px);
+        }
+
+        .hero-badge .dot {
+            width: 8px; height: 8px;
+            background: #22c55e;
+            border-radius: 50%;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.4); }
+            50% { transform: scale(1.2); box-shadow: 0 0 0 8px rgba(34, 197, 94, 0); }
+        }
+
+        .hero h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: clamp(3rem, 8vw, 6rem);
+            background: linear-gradient(135deg, var(--primary-light), var(--secondary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease-out 0.3s both;
+            line-height: 1.2;
+        }
+
+        .hero .subtitle {
+            font-size: clamp(1.1rem, 3vw, 1.5rem);
+            color: var(--text-muted);
+            max-width: 600px;
+            line-height: 1.6;
+            animation: fadeInUp 1s ease-out 0.6s both;
+            font-weight: 300;
+        }
+
+        .hero .subtitle strong {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .scroll-hint {
+            position: absolute;
+            bottom: 2rem;
+            animation: fadeInUp 1s ease-out 1.2s both;
+        }
+
+        .scroll-hint .mouse {
+            width: 26px; height: 42px;
+            border: 2px solid var(--text-muted);
+            border-radius: 13px;
+            position: relative;
+            margin: 0 auto 0.5rem;
+        }
+
+        .scroll-hint .mouse::after {
+            content: '';
+            position: absolute;
+            width: 4px; height: 8px;
+            background: var(--primary-light);
+            border-radius: 2px;
+            top: 8px; left: 50%;
+            transform: translateX(-50%);
+            animation: scrollWheel 2s ease-in-out infinite;
+        }
+
+        @keyframes scrollWheel {
+            0%, 100% { transform: translateX(-50%) translateY(0); opacity: 1; }
+            50% { transform: translateX(-50%) translateY(10px); opacity: 0.3; }
+        }
+
+        .scroll-hint p {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ===== SECTION STYLES ===== */
+        section {
+            padding: 5rem 2rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            text-align: center;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .section-title .gradient-text {
+            background: linear-gradient(135deg, var(--primary-light), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            margin-bottom: 3rem;
+            font-weight: 300;
+        }
+
+        /* ===== COMPLIMENT CARDS ===== */
+        .compliment-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .compliment-card {
+            background: linear-gradient(135deg, rgba(168, 85, 247, 0.1), rgba(244, 114, 182, 0.05));
+            border: 1px solid rgba(168, 85, 247, 0.15);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(40px);
+        }
+
+        .compliment-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .compliment-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: linear-gradient(135deg, rgba(168, 85, 247, 0.2), rgba(244, 114, 182, 0.15));
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .compliment-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            border-color: rgba(168, 85, 247, 0.4);
+            box-shadow: 0 20px 60px rgba(168, 85, 247, 0.2);
+        }
+
+        .compliment-card:hover::before {
+            opacity: 1;
+        }
+
+        .compliment-card .emoji {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            display: block;
+            position: relative;
+            z-index: 1;
+            transition: transform 0.3s;
+        }
+
+        .compliment-card:hover .emoji {
+            transform: scale(1.3) rotate(10deg);
+        }
+
+        .compliment-card .text {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: var(--text);
+            position: relative;
+            z-index: 1;
+            font-weight: 400;
+        }
+
+        .compliment-card .hidden-text {
+            display: none;
+            margin-top: 0.8rem;
+            font-size: 0.9rem;
+            color: var(--accent);
+            font-weight: 500;
+        }
+
+        .compliment-card.revealed .hidden-text {
+            display: block;
+            animation: fadeInUp 0.4s ease-out;
+        }
+
+        /* ===== VIBE CHECK SECTION ===== */
+        .vibe-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .vibe-btn {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border: none;
+            color: white;
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            padding: 1rem 3rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(168, 85, 247, 0.3);
+        }
+
+        .vibe-btn::after {
+            content: '';
+            position: absolute;
+            top: 50%; left: 50%;
+            width: 0; height: 0;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.5s, height 0.5s;
+        }
+
+        .vibe-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(168, 85, 247, 0.5);
+        }
+
+        .vibe-btn:hover::after {
+            width: 400px; height: 400px;
+        }
+
+        .vibe-result {
+            font-size: 1.3rem;
+            text-align: center;
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .vibe-result .result-text {
+            animation: fadeInUp 0.5s ease-out;
+            background: linear-gradient(135deg, rgba(168, 85, 247, 0.1), rgba(244, 114, 182, 0.08));
+            border: 1px solid rgba(168, 85, 247, 0.2);
+            border-radius: 16px;
+            padding: 1.5rem 2rem;
+            backdrop-filter: blur(10px);
+        }
+
+        /* ===== INTEREST CARDS ===== */
+        .interest-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .interest-card {
+            background: linear-gradient(145deg, rgba(15, 10, 26, 0.8), rgba(168, 85, 247, 0.08));
+            border: 1px solid rgba(168, 85, 247, 0.12);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            backdrop-filter: blur(10px);
+            cursor: default;
+            opacity: 0;
+            transform: translateY(40px);
+        }
+
+        .interest-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .interest-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(168, 85, 247, 0.35);
+            box-shadow: 0 16px 50px rgba(168, 85, 247, 0.15);
+        }
+
+        .interest-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+            transition: transform 0.3s;
+        }
+
+        .interest-card:hover .interest-icon {
+            transform: scale(1.2);
+        }
+
+        .interest-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary-light);
+            font-weight: 600;
+        }
+
+        .interest-card p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        /* ===== FORTUNE COOKIE ===== */
+        .fortune-section {
+            text-align: center;
+        }
+
+        .cookie-container {
+            perspective: 1000px;
+            margin: 2rem auto;
+        }
+
+        .cookie {
+            font-size: 6rem;
+            cursor: pointer;
+            display: inline-block;
+            transition: transform 0.3s;
+            animation: cookieBounce 2s ease-in-out infinite;
+            filter: drop-shadow(0 10px 20px rgba(251, 191, 36, 0.3));
+        }
+
+        .cookie:hover {
+            transform: scale(1.15);
+        }
+
+        @keyframes cookieBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .fortune-text {
+            font-size: 1.2rem;
+            color: var(--accent);
+            min-height: 50px;
+            margin-top: 1.5rem;
+            font-style: italic;
+            font-weight: 400;
+        }
+
+        .fortune-text .fortune-msg {
+            animation: fadeInUp 0.5s ease-out;
+            display: inline-block;
+            background: rgba(251, 191, 36, 0.1);
+            border: 1px solid rgba(251, 191, 36, 0.2);
+            padding: 1rem 2rem;
+            border-radius: 12px;
+        }
+
+        /* ===== HUG COUNTER ===== */
+        .hug-section {
+            text-align: center;
+        }
+
+        .hug-btn {
+            font-size: 5rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.2s;
+            position: relative;
+            display: inline-block;
+        }
+
+        .hug-btn:active {
+            transform: scale(0.9);
+        }
+
+        .hug-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .hug-counter {
+            font-size: 1.5rem;
+            color: var(--secondary);
+            margin-top: 1rem;
+            font-weight: 600;
+        }
+
+        .hug-counter span {
+            font-size: 2rem;
+            color: var(--accent);
+        }
+
+        .hug-message {
+            margin-top: 1rem;
+            font-size: 1rem;
+            color: var(--text-muted);
+            min-height: 30px;
+        }
+
+        /* ===== MUSIC PLAYLIST ===== */
+        .playlist-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+        }
+
+        .playlist-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background: rgba(168, 85, 247, 0.06);
+            border: 1px solid rgba(168, 85, 247, 0.1);
+            border-radius: 14px;
+            padding: 1rem 1.5rem;
+            transition: all 0.3s;
+            cursor: default;
+        }
+
+        .playlist-item:hover {
+            background: rgba(168, 85, 247, 0.12);
+            border-color: rgba(168, 85, 247, 0.3);
+            transform: translateX(5px);
+        }
+
+        .playlist-item .number {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: rgba(168, 85, 247, 0.3);
+            min-width: 35px;
+        }
+
+        .playlist-item .song-info {
+            flex: 1;
+        }
+
+        .playlist-item .song-name {
+            font-weight: 600;
+            font-size: 1rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .playlist-item .song-artist {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .playlist-item .song-emoji {
+            font-size: 1.5rem;
+        }
+
+        /* ===== REASONS SECTION ===== */
+        .reasons-list {
+            max-width: 700px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .reason-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background: linear-gradient(135deg, rgba(168, 85, 247, 0.08), rgba(244, 114, 182, 0.04));
+            border: 1px solid rgba(168, 85, 247, 0.1);
+            border-radius: 14px;
+            padding: 1.2rem 1.5rem;
+            transition: all 0.3s;
+            opacity: 0;
+            transform: translateX(-30px);
+        }
+
+        .reason-item.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .reason-item:hover {
+            border-color: rgba(168, 85, 247, 0.3);
+            transform: translateX(8px);
+            box-shadow: 0 8px 30px rgba(168, 85, 247, 0.1);
+        }
+
+        .reason-number {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            width: 36px; height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.9rem;
+            flex-shrink: 0;
+        }
+
+        .reason-text {
+            font-size: 1rem;
+            line-height: 1.5;
+            font-weight: 400;
+        }
+
+        /* ===== FINAL MESSAGE ===== */
+        .final-section {
+            text-align: center;
+            padding: 6rem 2rem;
+            position: relative;
+        }
+
+        .final-section h2 {
+            font-family: 'Dancing Script', cursive;
+            font-size: clamp(2rem, 6vw, 3.5rem);
+            background: linear-gradient(135deg, var(--primary-light), var(--secondary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1.5rem;
+            line-height: 1.3;
+        }
+
+        .final-section p {
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            line-height: 1.7;
+            font-weight: 300;
+        }
+
+        .heart-burst {
+            font-size: 4rem;
+            display: inline-block;
+            animation: heartBeat 1.5s ease-in-out infinite;
+            cursor: pointer;
+        }
+
+        @keyframes heartBeat {
+            0%, 100% { transform: scale(1); }
+            15% { transform: scale(1.15); }
+            30% { transform: scale(1); }
+            45% { transform: scale(1.1); }
+        }
+
+        /* ===== THEME TOGGLE ===== */
+        .theme-toggle {
+            position: fixed;
+            top: 1.5rem;
+            right: 1.5rem;
+            z-index: 100;
+            background: rgba(168, 85, 247, 0.15);
+            border: 1px solid rgba(168, 85, 247, 0.3);
+            border-radius: 50%;
+            width: 50px; height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.3rem;
+            transition: all 0.3s;
+            backdrop-filter: blur(10px);
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.1) rotate(15deg);
+            background: rgba(168, 85, 247, 0.3);
+        }
+
+        /* ===== MUSIC PLAYER FLOATING BUTTON ===== */
+        .music-player-float {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 1001;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 0.8rem;
+        }
+
+        .music-now-playing {
+            background: rgba(15, 10, 26, 0.85);
+            border: 1px solid rgba(168, 85, 247, 0.3);
+            border-radius: 16px;
+            padding: 0.7rem 1.2rem;
+            backdrop-filter: blur(15px);
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            opacity: 0;
+            transform: translateY(10px) scale(0.95);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            pointer-events: none;
+            max-width: 280px;
+        }
+
+        .music-now-playing.show {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            pointer-events: auto;
+        }
+
+        .music-now-playing .note-icon {
+            font-size: 1.2rem;
+            animation: noteWiggle 1s ease-in-out infinite;
+        }
+
+        @keyframes noteWiggle {
+            0%, 100% { transform: rotate(-5deg); }
+            50% { transform: rotate(5deg); }
+        }
+
+        .music-now-playing .song-details {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .music-now-playing .song-title {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--text);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 180px;
+        }
+
+        .music-now-playing .song-artist-label {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+        }
+
+        .music-toggle-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            box-shadow: 0 8px 30px rgba(168, 85, 247, 0.4), 0 0 0 0 rgba(168, 85, 247, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 3px;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .music-toggle-btn::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: linear-gradient(135deg, rgba(255,255,255,0.15), transparent);
+            border-radius: 50%;
+        }
+
+        .music-toggle-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 12px 40px rgba(168, 85, 247, 0.5), 0 0 0 8px rgba(168, 85, 247, 0.15);
+        }
+
+        .music-toggle-btn:active {
+            transform: scale(0.95);
+        }
+
+        .music-toggle-btn.playing {
+            animation: musicPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes musicPulse {
+            0%, 100% { box-shadow: 0 8px 30px rgba(168, 85, 247, 0.4), 0 0 0 0 rgba(168, 85, 247, 0.3); }
+            50% { box-shadow: 0 8px 30px rgba(168, 85, 247, 0.5), 0 0 0 12px rgba(168, 85, 247, 0); }
+        }
+
+        /* Equalizer bars */
+        .eq-bar {
+            width: 4px;
+            background: white;
+            border-radius: 2px;
+            transition: height 0.2s;
+            position: relative;
+            z-index: 1;
+        }
+
+        .music-toggle-btn:not(.playing) .eq-bar {
+            height: 8px !important;
+        }
+
+        .music-toggle-btn.playing .eq-bar {
+            animation: eqBounce 0.8s ease-in-out infinite;
+        }
+
+        .music-toggle-btn.playing .eq-bar:nth-child(1) {
+            animation-delay: 0s;
+        }
+        .music-toggle-btn.playing .eq-bar:nth-child(2) {
+            animation-delay: 0.15s;
+        }
+        .music-toggle-btn.playing .eq-bar:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+        .music-toggle-btn.playing .eq-bar:nth-child(4) {
+            animation-delay: 0.45s;
+        }
+
+        @keyframes eqBounce {
+            0%, 100% { height: 8px; }
+            25% { height: 20px; }
+            50% { height: 12px; }
+            75% { height: 24px; }
+        }
+
+        /* Paused icon */
+        .music-toggle-btn .pause-icon {
+            display: none;
+            position: relative;
+            z-index: 1;
+        }
+
+        .music-toggle-btn .eq-bars {
+            display: flex;
+            align-items: center;
+            gap: 3px;
+            height: 24px;
+        }
+
+        /* Music prompt overlay */
+        .music-prompt {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: 10000;
+            background: rgba(15, 10, 26, 0.7);
+            backdrop-filter: blur(8px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 1;
+            transition: opacity 0.5s ease;
+            cursor: pointer;
+        }
+
+        .music-prompt.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .music-prompt-content {
+            text-align: center;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .music-prompt-content .big-emoji {
+            font-size: 4rem;
+            display: block;
+            margin-bottom: 1.5rem;
+            animation: cookieBounce 2s ease-in-out infinite;
+        }
+
+        .music-prompt-content h2 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, var(--primary-light), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.8rem;
+        }
+
+        .music-prompt-content p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            font-weight: 300;
+        }
+
+        .music-prompt-content .tap-hint {
+            margin-top: 2rem;
+            font-size: 0.85rem;
+            color: rgba(192, 132, 252, 0.6);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        /* Volume slider */
+        .volume-control {
+            position: absolute;
+            bottom: 70px;
+            right: 0;
+            background: rgba(15, 10, 26, 0.9);
+            border: 1px solid rgba(168, 85, 247, 0.3);
+            border-radius: 14px;
+            padding: 1rem 0.8rem;
+            backdrop-filter: blur(15px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            opacity: 0;
+            transform: translateY(10px);
+            pointer-events: none;
+            transition: all 0.3s ease;
+        }
+
+        .volume-control.show {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+
+        .volume-control input[type="range"] {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 100px;
+            height: 4px;
+            background: rgba(168, 85, 247, 0.3);
+            border-radius: 2px;
+            outline: none;
+            transform: rotate(-90deg);
+            transform-origin: center;
+            margin: 40px 0;
+        }
+
+        .volume-control input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(168, 85, 247, 0.4);
+        }
+
+        .volume-control .vol-icon {
+            font-size: 1rem;
+        }
+
+        /* ===== MINI HEART BURST ANIMATION ===== */
+        .mini-heart {
+            position: fixed;
+            pointer-events: none;
+            font-size: 1.2rem;
+            z-index: 999;
+            animation: miniHeartRise 1.5s ease-out forwards;
+        }
+
+        @keyframes miniHeartRise {
+            0% { opacity: 1; transform: translate(0, 0) scale(1); }
+            100% { opacity: 0; transform: translate(var(--tx), -80px) scale(0.5); }
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            section {
+                padding: 3rem 1.5rem;
+            }
+
+            .compliment-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .interest-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .playlist-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .music-player-float {
+                bottom: 1.2rem;
+                right: 1.2rem;
+            }
+
+            .music-toggle-btn {
+                width: 52px;
+                height: 52px;
+            }
+
+            .music-now-playing {
+                max-width: 220px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .interest-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ===== SMOOTH REVEAL ===== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ===== DIVIDER ===== */
+        .section-divider {
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            margin: 0 auto 3rem;
+            border-radius: 3px;
+        }
+
+        /* ===== SPARKLE CURSOR ===== */
+        .sparkle {
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            font-size: 0.8rem;
+            animation: sparkleFade 0.8s ease-out forwards;
+        }
+
+        @keyframes sparkleFade {
+            0% { opacity: 1; transform: translate(0, 0) scale(1) rotate(0deg); }
+            100% { opacity: 0; transform: translate(var(--tx), var(--ty)) scale(0) rotate(180deg); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Background Music -->
+    <audio id="bg-music" loop preload="auto">
+        <source src="bgmusic.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Music Start Prompt -->
+    <div class="music-prompt" id="music-prompt">
+        <div class="music-prompt-content">
+            <span class="big-emoji">🎵</span>
+            <h2>Hey Saanvi! 💜</h2>
+            <p>This page comes with a special soundtrack...</p>
+            <div class="tap-hint">✨ Tap anywhere to begin ✨</div>
+        </div>
+    </div>
+
+    <!-- Background Effects -->
+    <div class="bg-orbs">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
+    <div class="stars" id="stars"></div>
+
+    <!-- Theme Toggle -->
+    <button class="theme-toggle" id="theme-toggle" title="Toggle sparkle mode ✨">✨</button>
+
+    <!-- Floating Music Player -->
+    <div class="music-player-float" id="music-player-float">
+        <div class="music-now-playing" id="now-playing">
+            <span class="note-icon">🎵</span>
+            <div class="song-details">
+                <span class="song-title">Heeriye</span>
+                <span class="song-artist-label">Jasleen Royal ft. Arijit Singh</span>
+            </div>
+        </div>
+        <div style="position: relative;">
+            <button class="music-toggle-btn" id="music-toggle" title="Toggle music 🎵">
+                <div class="eq-bars">
+                    <div class="eq-bar" style="height: 8px;"></div>
+                    <div class="eq-bar" style="height: 8px;"></div>
+                    <div class="eq-bar" style="height: 8px;"></div>
+                    <div class="eq-bar" style="height: 8px;"></div>
+                </div>
+            </button>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="content">
+
+        <!-- HERO -->
+        <section class="hero" id="hero">
+            <div class="hero-badge">
+                <span class="dot"></span>
+                Made with love, just for you
+            </div>
+            <h1>Hey Saanvi! 💜</h1>
+            <p class="subtitle">
+                Heard your day was a little <em>meh</em> today... 😴<br>
+                So here's a whole page of <strong>good vibes</strong> just for you ✨
+            </p>
+            <div class="scroll-hint">
+                <div class="mouse"></div>
+                <p>Scroll down</p>
+            </div>
+        </section>
+
+        <!-- COMPLIMENTS -->
+        <section id="compliments">
+            <h2 class="section-title reveal">
+                <span class="gradient-text">Things You Need to Hear Today</span> 💫
+            </h2>
+            <p class="section-subtitle reveal">Click each card for a little surprise 👀</p>
+            <div class="compliment-grid" id="compliment-grid">
+                <!-- Cards injected by JS -->
+            </div>
+        </section>
+
+        <!-- VIBE CHECK -->
+        <section id="vibe-check">
+            <h2 class="section-title reveal">
+                <span class="gradient-text">Instant Vibe Check</span> 🎲
+            </h2>
+            <p class="section-subtitle reveal">Feeling unsure about something? Let the universe decide.</p>
+            <div class="vibe-container reveal">
+                <button class="vibe-btn" id="vibe-btn">🎰 Generate a Vibe ✨</button>
+                <div class="vibe-result" id="vibe-result"></div>
+            </div>
+        </section>
+
+        <!-- YOUR THINGS -->
+        <section id="interests">
+            <h2 class="section-title reveal">
+                <span class="gradient-text">Things That Make You, YOU</span> 🌟
+            </h2>
+            <p class="section-subtitle reveal">A celebration of everything awesome about you</p>
+            <div class="interest-grid" id="interest-grid">
+                <!-- Cards injected by JS -->
+            </div>
+        </section>
+
+        <!-- FORTUNE COOKIE -->
+        <section class="fortune-section" id="fortune">
+            <h2 class="section-title reveal">
+                <span class="gradient-text">Crack Open a Fortune</span> 🥠
+            </h2>
+            <p class="section-subtitle reveal">Tap the cookie to reveal your fortune!</p>
+            <div class="cookie-container reveal">
+                <span class="cookie" id="fortune-cookie">🥠</span>
+            </div>
+            <div class="fortune-text" id="fortune-text"></div>
+        </section>
+
+        <!-- MOOD BOOSTER PLAYLIST -->
+        <section id="playlist">
+            <h2 class="section-title reveal">
+                <span class="gradient-text">Your Mood Booster Playlist</span> 🎵
+            </h2>
+            <p class="section-subtitle reveal">Songs that slap harder than a boring day 🎧</p>
+            <div class="playlist-grid reveal" id="playlist-grid">
+                <!-- Items injected by JS -->
+            </div>
+        </section>
+
+        <!-- VIRTUAL HUGS -->
+        <section class="hug-section" id="hugs">
+            <h2 class="section-title reveal">
+                <span class="gradient-text">Virtual Hug Station</span> 🤗
+            </h2>
+            <p class="section-subtitle reveal">Tap the bear for instant serotonin!</p>
+            <div class="reveal">
+                <button class="hug-btn" id="hug-btn">🧸</button>
+                <div class="hug-counter">
+                    Hugs sent: <span id="hug-count">0</span>
+                </div>
+                <div class="hug-message" id="hug-message"></div>
+            </div>
+        </section>
+
+        <!-- REASONS YOU'RE AWESOME -->
+        <section id="reasons">
+            <h2 class="section-title reveal">
+                <span class="gradient-text">Reasons You're Amazing</span> 👑
+            </h2>
+            <p class="section-subtitle reveal">In case you forgot (which is unacceptable btw)</p>
+            <div class="reasons-list" id="reasons-list">
+                <!-- Items injected by JS -->
+            </div>
+        </section>
+
+        <!-- FINAL MESSAGE -->
+        <section class="final-section" id="final">
+            <div class="reveal">
+                <h2>Remember Saanvi...</h2>
+                <p>
+                    Boring days happen, but they don't define you. 
+                    Tomorrow is a brand new canvas, and you've got all the colors. 
+                    You're doing better than you think, and people around you are grateful you exist. 💜
+                </p>
+                <p>
+                    Now go grab some good food, put on your favorite show, 
+                    and let the vibes reset. You deserve it! ✨
+                </p>
+                <span class="heart-burst" id="heart-burst">💜</span>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Confetti Container -->
+    <div class="confetti-container" id="confetti-container"></div>
+
+    <script>
+        // ===== BACKGROUND MUSIC CONTROL =====
+        const bgMusic = document.getElementById('bg-music');
+        const musicToggle = document.getElementById('music-toggle');
+        const musicPrompt = document.getElementById('music-prompt');
+        const nowPlaying = document.getElementById('now-playing');
+        let musicStarted = false;
+
+        bgMusic.volume = 0.4;
+
+        // Prompt overlay — tap anywhere to start music
+        musicPrompt.addEventListener('click', () => {
+            musicPrompt.classList.add('hidden');
+            bgMusic.play().then(() => {
+                musicStarted = true;
+                musicToggle.classList.add('playing');
+                // Show "now playing" briefly
+                nowPlaying.classList.add('show');
+                setTimeout(() => nowPlaying.classList.remove('show'), 4000);
+            }).catch(() => {
+                // Autoplay blocked, toggle will handle it
+                musicStarted = false;
+            });
+            setTimeout(() => {
+                musicPrompt.style.display = 'none';
+            }, 600);
+        });
+
+        // Toggle play/pause
+        musicToggle.addEventListener('click', () => {
+            if (bgMusic.paused) {
+                bgMusic.play().then(() => {
+                    musicToggle.classList.add('playing');
+                    nowPlaying.classList.add('show');
+                    setTimeout(() => nowPlaying.classList.remove('show'), 3000);
+                });
+            } else {
+                bgMusic.pause();
+                musicToggle.classList.remove('playing');
+                nowPlaying.classList.remove('show');
+            }
+        });
+
+        // Show now-playing on hover
+        musicToggle.addEventListener('mouseenter', () => {
+            if (!bgMusic.paused) {
+                nowPlaying.classList.add('show');
+            }
+        });
+
+        musicToggle.addEventListener('mouseleave', () => {
+            setTimeout(() => {
+                nowPlaying.classList.remove('show');
+            }, 1500);
+        });
+
+        // ===== STARS =====
+        const starsContainer = document.getElementById('stars');
+        for (let i = 0; i < 80; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            star.style.left = Math.random() * 100 + '%';
+            star.style.top = Math.random() * 100 + '%';
+            star.style.animationDelay = Math.random() * 3 + 's';
+            star.style.animationDuration = (2 + Math.random() * 3) + 's';
+            starsContainer.appendChild(star);
+        }
+
+        // ===== FLOATING EMOJIS =====
+        const emojis = ['💜', '✨', '🌟', '🦋', '🌸', '💫', '🎵', '🍰', '🎬', '✈️', '💛', '🌈'];
+        function createFloatingEmoji() {
+            const emoji = document.createElement('div');
+            emoji.className = 'floating-emoji';
+            emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+            emoji.style.left = Math.random() * 100 + '%';
+            emoji.style.animationDuration = (6 + Math.random() * 6) + 's';
+            emoji.style.animationDelay = Math.random() * 2 + 's';
+            document.body.appendChild(emoji);
+            setTimeout(() => emoji.remove(), 14000);
+        }
+        setInterval(createFloatingEmoji, 1500);
+
+        // ===== COMPLIMENT CARDS =====
+        const compliments = [
+            { emoji: '🌸', text: "You have the kind of energy that makes everyone around you smile without even trying.", hidden: "Literally a human sunflower 🌻" },
+            { emoji: '✨', text: "Your taste in music and movies? *Chef's kiss.* Absolutely elite.", hidden: "Main character behavior 💅" },
+            { emoji: '💜', text: "Even on boring days, you still manage to be the most interesting person in the room.", hidden: "It's giving effortlessly cool ❄️" },
+            { emoji: '🦋', text: "Your vibe is immaculate. Like, unmatched. Not even close.", hidden: "Nobody does it like Saanvi 👑" },
+            { emoji: '🔥', text: "You could literally make doing nothing look aesthetic. That's a superpower.", hidden: "Aesthetic queen activated 📸" },
+            { emoji: '🌙', text: "You deserve every good thing that's coming your way. And trust me, it's coming.", hidden: "The universe is literally cooking for you 🍳" }
+        ];
+
+        const complimentGrid = document.getElementById('compliment-grid');
+        compliments.forEach((c, i) => {
+            const card = document.createElement('div');
+            card.className = 'compliment-card';
+            card.style.transitionDelay = (i * 0.1) + 's';
+            card.innerHTML = `
+                <span class="emoji">${c.emoji}</span>
+                <div class="text">${c.text}</div>
+                <div class="hidden-text">${c.hidden}</div>
+            `;
+            card.addEventListener('click', () => {
+                card.classList.toggle('revealed');
+                if (card.classList.contains('revealed')) {
+                    burstHearts(card);
+                }
+            });
+            complimentGrid.appendChild(card);
+        });
+
+        // ===== INTEREST CARDS =====
+        const interests = [
+            { icon: '🎵', title: 'Music & Dancing', desc: 'Whether it\'s headphones in or full-on dance mode, music is your therapy and nobody can tell you otherwise.' },
+            { icon: '🍰', title: 'Food & Desserts', desc: 'Life is short, eat the cake. And the pizza. And maybe some momos too. You know what, eat everything.' },
+            { icon: '🎬', title: 'Movies & Shows', desc: 'Binge-watching isn\'t a hobby, it\'s a lifestyle. And you do it with absolute dedication.' },
+            { icon: '✈️', title: 'Travel & Adventure', desc: 'The world is your playground and you\'ve got a whole bucket list waiting. Next stop: everywhere.' }
+        ];
+
+        const interestGrid = document.getElementById('interest-grid');
+        interests.forEach((item, i) => {
+            const card = document.createElement('div');
+            card.className = 'interest-card';
+            card.style.transitionDelay = (i * 0.15) + 's';
+            card.innerHTML = `
+                <span class="interest-icon">${item.icon}</span>
+                <h3>${item.title}</h3>
+                <p>${item.desc}</p>
+            `;
+            interestGrid.appendChild(card);
+        });
+
+        // ===== VIBE GENERATOR =====
+        const vibes = [
+            "🌟 Tomorrow is going to be YOUR day. I can feel it!",
+            "🍕 You deserve a surprise pizza delivery right now.",
+            "💃 Put on your favorite song and dance like nobody's watching!",
+            "🌈 Plot twist: something amazing is about to happen to you.",
+            "☕ A cozy coffee and your favorite show? That's the move tonight.",
+            "🎵 Your Spotify Wrapped is going to be legendary this year.",
+            "🧳 Your next trip is going to be absolutely unforgettable.",
+            "🍰 Calories don't count when you're having a boring day. Go treat yourself!",
+            "💜 Someone is thinking about you right now. (Yes, really!)",
+            "🎬 A new binge-worthy show is waiting for you to discover it tonight.",
+            "🦋 You're literally about to enter your most amazing era yet.",
+            "✨ The universe just winked at you. Good things incoming!",
+            "🌙 Tonight's sleep is going to hit different. Manifesting it!",
+            "🎤 Karaoke night? Your voice was made for the spotlight!",
+            "🌸 Main character moment loading... 99%... DONE!"
+        ];
+
+        const vibeBtn = document.getElementById('vibe-btn');
+        const vibeResult = document.getElementById('vibe-result');
+
+        vibeBtn.addEventListener('click', () => {
+            vibeBtn.style.transform = 'scale(0.95)';
+            setTimeout(() => vibeBtn.style.transform = '', 150);
+            
+            const vibe = vibes[Math.floor(Math.random() * vibes.length)];
+            vibeResult.innerHTML = `<div class="result-text">${vibe}</div>`;
+            launchConfetti();
+        });
+
+        // ===== FORTUNE COOKIE =====
+        const fortunes = [
+            "You will find unexpected joy in the smallest moment this week. 🌟",
+            "Someone is about to say exactly what you need to hear. 💫",
+            "Your comfort zone is about to become very uncomfortable... in the best way! 🚀",
+            "That thing you've been overthinking? It's going to work out perfectly. ✅",
+            "A spontaneous adventure is written in your stars very soon. 🗺️",
+            "You're about to laugh so hard your stomach hurts. Get ready! 😂",
+            "Your next meal is going to be absolutely divine. 🍜",
+            "A song is going to come on that perfectly captures your mood. 🎶",
+            "Someone secretly admires your vibe more than you know. 👀",
+            "Tomorrow morning's sunrise was made just for you. 🌅"
+        ];
+
+        const fortuneCookie = document.getElementById('fortune-cookie');
+        const fortuneText = document.getElementById('fortune-text');
+
+        fortuneCookie.addEventListener('click', () => {
+            fortuneCookie.style.animation = 'none';
+            fortuneCookie.style.transform = 'scale(1.3) rotate(20deg)';
+            setTimeout(() => {
+                fortuneCookie.style.transform = '';
+                fortuneCookie.style.animation = '';
+            }, 300);
+            
+            const fortune = fortunes[Math.floor(Math.random() * fortunes.length)];
+            fortuneText.innerHTML = `<span class="fortune-msg">${fortune}</span>`;
+            launchConfetti();
+        });
+
+        // ===== PLAYLIST =====
+        const songs = [
+            { name: "Levitating", artist: "Dua Lipa", emoji: "🪩" },
+            { name: "good 4 u", artist: "Olivia Rodrigo", emoji: "🎸" },
+            { name: "Blinding Lights", artist: "The Weeknd", emoji: "🌃" },
+            { name: "Shake It Off", artist: "Taylor Swift", emoji: "💃" },
+            { name: "Peaches", artist: "Justin Bieber", emoji: "🍑" },
+            { name: "Don't Start Now", artist: "Dua Lipa", emoji: "🕺" },
+            { name: "Happy", artist: "Pharrell Williams", emoji: "😊" },
+            { name: "Uptown Funk", artist: "Bruno Mars", emoji: "🔥" }
+        ];
+
+        const playlistGrid = document.getElementById('playlist-grid');
+        songs.forEach((song, i) => {
+            const item = document.createElement('div');
+            item.className = 'playlist-item';
+            item.innerHTML = `
+                <span class="number">${String(i + 1).padStart(2, '0')}</span>
+                <div class="song-info">
+                    <div class="song-name">${song.name}</div>
+                    <div class="song-artist">${song.artist}</div>
+                </div>
+                <span class="song-emoji">${song.emoji}</span>
+            `;
+            playlistGrid.appendChild(item);
+        });
+
+        // ===== HUG COUNTER =====
+        let hugCount = 0;
+        const hugBtn = document.getElementById('hug-btn');
+        const hugCountEl = document.getElementById('hug-count');
+        const hugMessage = document.getElementById('hug-message');
+
+        const hugMessages = [
+            "🤗 Warm hug sent!",
+            "💜 That one was extra tight!",
+            "🧸 Virtual bear hug activated!",
+            "✨ You're being hugged across the internet!",
+            "🌟 The coziest hug in the history of hugs!",
+            "💫 This hug comes with sprinkles!",
+            "🦋 Butterfly hug! Gentle but full of love!",
+            "🌈 Rainbow-powered hug incoming!",
+            "🍫 This hug tastes like chocolate!",
+            "💜 Infinite hugs unlocked!"
+        ];
+
+        hugBtn.addEventListener('click', () => {
+            hugCount++;
+            hugCountEl.textContent = hugCount;
+            hugMessage.textContent = hugMessages[Math.min(hugCount - 1, hugMessages.length - 1)];
+            hugMessage.style.animation = 'none';
+            requestAnimationFrame(() => {
+                hugMessage.style.animation = 'fadeInUp 0.4s ease-out';
+            });
+
+            // Burst hearts from button
+            for (let i = 0; i < 5; i++) {
+                setTimeout(() => {
+                    const heart = document.createElement('div');
+                    heart.className = 'mini-heart';
+                    const rect = hugBtn.getBoundingClientRect();
+                    heart.style.left = rect.left + rect.width / 2 + 'px';
+                    heart.style.top = rect.top + 'px';
+                    heart.style.setProperty('--tx', (Math.random() * 60 - 30) + 'px');
+                    heart.textContent = ['💜', '💛', '🤍', '💗', '✨'][Math.floor(Math.random() * 5)];
+                    document.body.appendChild(heart);
+                    setTimeout(() => heart.remove(), 1500);
+                }, i * 80);
+            }
+
+            if (hugCount === 10) {
+                launchConfetti();
+                hugMessage.textContent = "🎉 10 HUGS! You just unlocked MEGA HUG MODE!";
+            }
+            if (hugCount === 25) {
+                launchConfetti();
+                hugMessage.textContent = "👑 25 HUGS! You're officially the Hug Champion!";
+            }
+            if (hugCount === 50) {
+                launchConfetti();
+                hugMessage.textContent = "🏆 50 HUGS?! Saanvi, you're breaking the hug-o-meter!";
+            }
+        });
+
+        // ===== REASONS =====
+        const reasons = [
+            "You light up every room you walk into, even when you don't realize it. 🌟",
+            "Your passion for music and dancing is absolutely infectious. 💃",
+            "The way you enjoy food is an art form. Truly inspiring. 🍰",
+            "You have the best taste in movies and shows. Impeccable, really. 🎬",
+            "Your wanderlust spirit makes life feel like an adventure. ✈️",
+            "You care about people more deeply than most. That's rare and beautiful. 💜",
+            "Your laugh could literally cure sadness. It should be prescribed. 😂",
+            "You handle tough days with more grace than you give yourself credit for. 👑",
+            "You make the ordinary feel extraordinary just by being you. ✨",
+            "The world is genuinely better because Saanvi exists in it. 🌍"
+        ];
+
+        const reasonsList = document.getElementById('reasons-list');
+        reasons.forEach((reason, i) => {
+            const item = document.createElement('div');
+            item.className = 'reason-item';
+            item.style.transitionDelay = (i * 0.1) + 's';
+            item.innerHTML = `
+                <span class="reason-number">${i + 1}</span>
+                <span class="reason-text">${reason}</span>
+            `;
+            reasonsList.appendChild(item);
+        });
+
+        // ===== CONFETTI =====
+        function launchConfetti() {
+            const container = document.getElementById('confetti-container');
+            const colors = ['#a855f7', '#f472b6', '#fbbf24', '#22c55e', '#60a5fa', '#f43f5e', '#c084fc'];
+            
+            for (let i = 0; i < 60; i++) {
+                setTimeout(() => {
+                    const piece = document.createElement('div');
+                    piece.className = 'confetti-piece';
+                    piece.style.left = Math.random() * 100 + '%';
+                    piece.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                    piece.style.animationDuration = (2 + Math.random() * 2) + 's';
+                    piece.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
+                    piece.style.width = (6 + Math.random() * 8) + 'px';
+                    piece.style.height = (6 + Math.random() * 8) + 'px';
+                    piece.style.transform = `rotate(${Math.random() * 360}deg)`;
+                    container.appendChild(piece);
+                    setTimeout(() => piece.remove(), 4000);
+                }, i * 30);
+            }
+        }
+
+        // ===== BURST HEARTS FROM ELEMENT =====
+        function burstHearts(el) {
+            const rect = el.getBoundingClientRect();
+            for (let i = 0; i < 6; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'mini-heart';
+                heart.style.left = rect.left + rect.width / 2 + 'px';
+                heart.style.top = rect.top + rect.height / 2 + 'px';
+                heart.style.setProperty('--tx', (Math.random() * 80 - 40) + 'px');
+                heart.textContent = ['💜', '💗', '✨', '💫', '🌟'][Math.floor(Math.random() * 5)];
+                document.body.appendChild(heart);
+                setTimeout(() => heart.remove(), 1500);
+            }
+        }
+
+        // ===== SCROLL REVEAL =====
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+        document.querySelectorAll('.reveal, .compliment-card, .interest-card, .reason-item').forEach(el => {
+            observer.observe(el);
+        });
+
+        // ===== SPARKLE CURSOR =====
+        let sparkleEnabled = true;
+        let lastSparkle = 0;
+
+        document.addEventListener('mousemove', (e) => {
+            if (!sparkleEnabled) return;
+            const now = Date.now();
+            if (now - lastSparkle < 100) return;
+            lastSparkle = now;
+
+            const sparkle = document.createElement('div');
+            sparkle.className = 'sparkle';
+            sparkle.textContent = ['✨', '💫', '⭐', '🌟'][Math.floor(Math.random() * 4)];
+            sparkle.style.left = e.clientX + 'px';
+            sparkle.style.top = e.clientY + 'px';
+            sparkle.style.setProperty('--tx', (Math.random() * 40 - 20) + 'px');
+            sparkle.style.setProperty('--ty', (Math.random() * -30 - 10) + 'px');
+            document.body.appendChild(sparkle);
+            setTimeout(() => sparkle.remove(), 800);
+        });
+
+        // ===== THEME TOGGLE (sparkle mode) =====
+        const themeToggle = document.getElementById('theme-toggle');
+        themeToggle.addEventListener('click', () => {
+            sparkleEnabled = !sparkleEnabled;
+            themeToggle.textContent = sparkleEnabled ? '✨' : '💤';
+            themeToggle.title = sparkleEnabled ? 'Sparkle mode ON' : 'Sparkle mode OFF';
+        });
+
+        // ===== HEART BURST ON FINAL HEART =====
+        const heartBurst = document.getElementById('heart-burst');
+        heartBurst.addEventListener('click', () => {
+            launchConfetti();
+            burstHearts(heartBurst);
+        });
+
+        // ===== INITIAL CONFETTI ON LOAD =====
+        window.addEventListener('load', () => {
+            setTimeout(launchConfetti, 1500);
+        });
+    </script>
+</body>
+</html>
